@@ -1,11 +1,11 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 export default function InventoryTable() {
   const [data, setData] = useState(null);
   const inventoryUrl = "http://localhost:8080/api/inventory";
   useEffect(() => {
-    fetch(inventoryUrl)
-      .then((res) => res.json())
-      .then((json) => setData(json))
+    axios.get(inventoryUrl)
+      .then((res) => setData(res.data))
       .catch((err) => console.error("Fetch Error", err));
   }, []);
 
@@ -30,7 +30,7 @@ export default function InventoryTable() {
       </thead>
       <tbody>
         {data ? (
-          data.map((item) => {
+          data.map((item) => (
             <tr key={item.medicineId}>
               <td>{item.medicineId}</td>
               <td>{item.name}</td>
@@ -45,11 +45,11 @@ export default function InventoryTable() {
               <td>{item.expirationDate}</td>
               <td>{item.storageLocation}</td>
               <td>{item.supplierInfo}</td>
-            </tr>;
-          })
+            </tr>
+          ))
         ) : (
           <tr>
-            <td colspan="13" className="empty">
+            <td colSpan="13" className="empty">
               No Data Found
             </td>
           </tr>

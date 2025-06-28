@@ -22,6 +22,9 @@ function Sidenav() {
         <li>
           <a href="/sales">Sales</a>
         </li>
+        <li> 
+          <a href="/add-stock">Add Stock</a>
+        </li>
       </ul>
     </nav>
   );
