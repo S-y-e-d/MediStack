@@ -1,5 +1,6 @@
+import SalesTable from "../components/SalesTable";
 function Sales() {
-  return <div className="inventory">This is Sales</div>;
+  return <SalesTable />;
 }
 
 export default Sales;
