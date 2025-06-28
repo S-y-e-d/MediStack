@@ -1,0 +1,25 @@
+.notification-row {
+    font-family: monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.notification-row.unread {
+    background-color: #ffeeba;
+    border-color: #ffc107;
+}
+
+.notification-row.read {
+    background-color: #8b8a87;
+    border-color: #000000;
+}

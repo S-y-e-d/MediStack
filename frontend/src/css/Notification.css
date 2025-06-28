@@ -1,0 +1,7 @@
+.header-top{
+    display: flex;
+    justify-content: space-between;
+}
+.header-left, .header-right{
+    width:auto
+}
