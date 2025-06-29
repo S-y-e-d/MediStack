@@ -1,0 +1,101 @@
+.transaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100%; */
+  height: 100%;
+  background-color: #fdfaf6;
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 20%;
+  border: 1px solid black;
+  border-radius: 5px 5px 5px 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.transaction-form form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.transaction-form input {
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #f2ede2;
+  border-radius: 5px;
+}
+.transaction-form div input[name="medicineName"] {
+  width: 100%;
+}
+
+.transaction-form button {
+  background-color: #b48a60; /* warm muted brown */
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-form button:hover {
+  background-color: #9f7550;
+}
+
+.transaction-form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(180, 138, 96, 0.3);
+}
+
+.input-wrapper {
+  display: flex;
+
+  width: 35%;
+}
+
+.suggestions {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  margin-top: 2px;
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f2ede2;
+}
+
+.transaction-receipt {
+  box-sizing: border-box;
+  margin: 20px;
+  width: 50%;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.transaction-receipt h1 {
+  text-align: center;
+}

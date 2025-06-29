@@ -5,8 +5,10 @@ function Sidenav() {
     links.forEach((link) => {
       if (link.getAttribute("href") === window.location.pathname) {
         link.classList.add("active");
+        // link.classList.add(window.location.pathname.slice(1));
       } else {
         link.classList.remove("active");
+        // link.classList.remove(window.location.pathname.slice(1));
       }
     });
   }, []);
@@ -22,11 +24,14 @@ function Sidenav() {
         <li>
           <a href="/sales">Sales</a>
         </li>
-        <li> 
+        <li>
           <a href="/add-stock">Add Stock</a>
         </li>
-        <li> 
+        <li>
           <a href="/notification">Notification</a>
+        </li>
+        <li>
+          <a href="/transaction">Transaction</a>
         </li>
       </ul>
     </nav>
