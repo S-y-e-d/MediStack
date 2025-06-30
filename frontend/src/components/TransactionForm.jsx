@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function TransactionForm() {
+export default function TransactionForm({ receiptData, setReceiptData }) {
   const [formData, setFormData] = useState({
     medicineName: "",
     quantity: 0,
@@ -41,6 +41,18 @@ export default function TransactionForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // TODO: Add the code for subtracting from stock
+
+    // set the state vars to send data to generate receipt
+    const newItem = {
+      medicineId: "",
+      medicineName: "",
+      quantity: "",
+      price: "",
+    };
+    setReceiptData({
+      list: [...receiptData.list, newItem],
+      total: receiptData.total + newItem.price * newItem.quantity,
+    });
   };
   return (
     <div className="transaction-form">

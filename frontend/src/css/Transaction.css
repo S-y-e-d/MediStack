@@ -96,6 +96,33 @@
   border-radius: 5px;
 }
 
-.transaction-receipt h1 {
+.transaction-receipt {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.transaction-receipt h1,
+.transaction-recepit h2 {
   text-align: center;
+}
+
+.transaction-receipt span {
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.receipt-table {
+  width: 100%;
+}
+
+.receipt-table tr,
+.receipt-table td {
+  border: none;
+  background-color: white;
+}
+
+.receipt-table thead {
+  background-color: white;
 }
