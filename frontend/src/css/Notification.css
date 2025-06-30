@@ -5,3 +5,18 @@
 .header-left, .header-right{
     width:auto
 }
+
+.header-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+/* .header-bottom-left{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.header-bottom-right{
+    display: flex;
+    justify-content: flex-end;
+} */

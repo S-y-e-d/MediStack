@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 export default function InventoryTable() {
   const [data, setData] = useState(null);
-  const inventoryUrl = "http://localhost:8080/api/inventory";
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const inventoryUrl = `${BASE_URL}/api/inventory`;
   useEffect(() => {
     axios.get(inventoryUrl)
       .then((res) => setData(res.data))

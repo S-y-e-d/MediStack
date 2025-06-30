@@ -1,4 +1,4 @@
-package com.zoro.medicine;
+package com.zoro.medicine.controllers;
 
 import com.zoro.medicine.tables.InventoryData;
 import com.zoro.medicine.tables.InventoryDataRepository;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryDataController {

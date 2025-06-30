@@ -1,4 +1,4 @@
-package com.zoro.medicine;
+package com.zoro.medicine.controllers;
 
 import com.zoro.medicine.tables.SalesData;
 import com.zoro.medicine.tables.SalesDataRepository;
