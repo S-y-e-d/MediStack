@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,6 +15,7 @@ public class InventoryData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "medicine_id") // This must match your join
     private Long medicineId;
 
     private String name;
@@ -35,5 +37,9 @@ public class InventoryData {
 
     private String status;           // "Low Stock", "Expired", etc.
     private LocalDate lastNotified;
+
+    @OneToMany(mappedBy = "medicine")
+    private List<NotificationData> notifications;
+
 
 }

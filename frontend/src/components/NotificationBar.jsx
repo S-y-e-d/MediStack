@@ -15,10 +15,10 @@ function NotificationBar({ medicine, onClick }) {
         >
             <span className="item">{medicine.name}</span>
             <span className="item">Batch: {medicine.batchNumber}</span>
-            <span className="item">Shelf: {medicine.shelfNumber}</span>
-            <span className="item">Expiry: {medicine.expiryDate}</span>
-            <span className="item">Stocked: {medicine.stockDate}</span>
-            <span className="item">Mfg: {medicine.manufactureDate}</span>
+            <span className="item">Quantity: {medicine.quantityInStock}</span>
+            <span className="item">Expiry: {medicine.expirationDate}</span>
+            <span className="item">Stocked: {medicine.purchaseDate}</span>
+            <span className="item">Status: {medicine.status}</span>
         </div>
     );
 }

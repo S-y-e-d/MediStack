@@ -1,71 +1,66 @@
 import '../css/Notification.css'
-
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 import NotificationBar from '../components/NotificationBar';
 
 function Notification() {
     const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-    const notificationUrl = `${BASE_URL}/api/notificaion`;
-
+    const notificationUrl = `${BASE_URL}/api/notification`;
+    const generateNotification = `${BASE_URL}/api/notification/generate`;
     const [data, setData] = useState([]);
 
-    useEffect(
-        () =>{
-            axios.get(notificationUrl)
-            .then((result) => setData(result.data))
-            .catch((err) => console.error("Error Fetching Notification", err))
-        },
-    []); //fetch only when component loads
 
-    useEffect(
-    	() => {
-    		axios.get('http://localhost:8080/api/notification/type/LOW_STOCK')
-     		.then(res => setNotifications(res.data))
-    		.catch((err) => console.error("Cannot filter", err);
-    	}, [selectedFilter]
-    );
-	
-    // Filter options 
-    const filterOption = [
-        { id: 0, fil: 'None'},
-        { id: 1, fil: 'Low Stock'},
-        { id: 2, fil: 'Near Expiry'},
-        { id: 3, fil: 'Not Selling'}
 
-    ];
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                // First: trigger backend to generate new notifications
+                await axios.get(generateNotification); 
+
+                // Then: fetch the updated list of notifications
+                const result = await axios.get(notificationUrl);
+                setData(result.data);
+            } catch (err) {
+                console.error("Error Fetching Notification", err);
+            }
+        };
+
+        fetchNotifications();
+    }, []);
+
+
 
     const [selectedFilter, setSelectedFilter] = useState('None');
 
-    const sampleData = [
-        {
-            name: 'Paracetamol',
-            batchNumber: 'P122',
-            shelfNumber: 'A3',
-            expiryDate: '2025-01-15',
-            stockDate: '2024-05-01',
-            manufactureDate: '2024-03-01',
-            requiresAttention: true,
-        },
-        {
-            name: 'Paracetamol2',
-            batchNumber: 'P123',
-            shelfNumber: 'A3',
-            expiryDate: '2025-01-15',
-            stockDate: '2024-05-01',
-            manufactureDate: '2024-03-01',
-            requiresAttention: false,
-        },
+    const [notifications, setNotifications] = useState([]);
+
+    // Fetches info directly from the database. 
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/api/notification/type/LOW_STOCK')
+            .then(res => setNotifications(res.data))
+            .catch(err => console.error(err));
+    }, [selectedFilter]);
+
+    // Filter options 
+    const filterOption = [
+        { id: 0, fil: 'None' },
+        { id: 1, fil: 'Low Stock' },
+        { id: 2, fil: 'Near Expiry' },
+        { id: 3, fil: 'Not Selling' }
+
     ];
 
-    function handleFilterChange(event){
+
+    function handleFilterChange(event) {
         setSelectedFilter(event.target.value);
     }
 
-    useEffect( () =>{
+    useEffect(() => {
         // To-Do write notificaiton filter code here
 
-    },  
-    [selectedFilter]);
+    },
+        [selectedFilter]);
 
 
     return (
@@ -81,36 +76,36 @@ function Notification() {
                     </div>
                 </div >
                 <div className='header-bottom'>
-                       
-                       <div className='header-bottom-left'>
+
+                    <div className='header-bottom-left'>
                         <span>Sort By: </span>
                         <button>All</button>
                         <button>Unread</button>
                         <button>Read</button>
-                       </div>
+                    </div>
 
-                       <div className='header-bottom-right'>
-                            <span>Filter By: </span>
-                            <select value={selectedFilter} onChange={handleFilterChange}>
-                                {filterOption.map((item) => (
-                                    <option key={item.id} value={item.fil}>{item.fil}</option>
-                                ))}
-                            </select>
-                       </div>
-                        
+                    <div className='header-bottom-right'>
+                        <span>Filter By: </span>
+                        <select value={selectedFilter} onChange={handleFilterChange}>
+                            {filterOption.map((item) => (
+                                <option key={item.id} value={item.fil}>{item.fil}</option>
+                            ))}
+                        </select>
+                    </div>
+
                 </div>
-                
-            <div>
-                {sampleData.map((med) => (
-                    <NotificationBar
-                        key={med.batchNumber}
-                        medicine={med}
-                        onClick={() => alert(`Clicked on ${med.name}`)}
-                    />
-                ))}
+
+                <div>
+                    {data.map((noti) => (
+                        <NotificationBar
+                            key={noti.id}
+                            medicine={noti.medicine}
+                            onClick={() => alert(`Clicked on ${med.name}`)}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
-    </div>
     );
 
 }

@@ -10,12 +10,11 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "medicine_notification")
+
 public class NotificationData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long medicineId; // Foreign key to InventoryData
 
     private String message; //"Low stock", "Expiring soon", "Not selling"
     private String type; // ENUM: LOW_STOCK, EXPIRED, UNSOLD, etc.
@@ -24,6 +23,8 @@ public class NotificationData {
 
     private LocalDateTime createdAt;
 
-
+    @ManyToOne
+    @JoinColumn(name = "medicine_id", referencedColumnName = "medicine_id")
+    private InventoryData medicine;
 
 }
