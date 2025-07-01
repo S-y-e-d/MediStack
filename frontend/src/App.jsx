@@ -10,11 +10,11 @@ import Transaction from "./pages/Transaction";
 function App() {
   return (
     <div className="layout">
-      <div className="sidebar">
-        <Sidenav />
-      </div>
-      <div className="content">
-        <BrowserRouter>
+      <BrowserRouter>
+        <div className="sidebar">
+          <Sidenav />
+        </div>
+        <div className="content">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventory" element={<Inventory />} />
@@ -24,8 +24,8 @@ function App() {
             <Route path="/transaction" element={<Transaction />} />
             {/* add more routes as needed */}
           </Routes>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

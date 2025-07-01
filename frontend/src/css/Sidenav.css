@@ -28,7 +28,7 @@
   align-items: center;
 }
 
-.sidenav a.active {
+.sidenav NavLink.active {
   background-color: #e2e6ea;
 }
 

@@ -1,37 +1,57 @@
-import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
 function Sidenav() {
-  useEffect(() => {
-    const links = document.querySelectorAll(".sidenav a");
-    links.forEach((link) => {
-      if (link.getAttribute("href") === window.location.pathname) {
-        link.classList.add("active");
-        // link.classList.add(window.location.pathname.slice(1));
-      } else {
-        link.classList.remove("active");
-        // link.classList.remove(window.location.pathname.slice(1));
-      }
-    });
-  }, []);
   return (
     <nav className="sidenav">
       <ul>
         <li>
-          <a href="/">Home</a>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <a href="/inventory">Inventory</a>
+          <NavLink
+            to="/inventory"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Inventory
+          </NavLink>
         </li>
         <li>
-          <a href="/sales">Sales</a>
+          <NavLink
+            to="/sales"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Sales
+          </NavLink>
         </li>
         <li>
-          <a href="/add-stock">Add Stock</a>
+          <NavLink
+            to="/add-stock"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Add Stock
+          </NavLink>
         </li>
         <li>
-          <a href="/notification">Notification</a>
+          <NavLink
+            to="/notification"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Notification
+          </NavLink>
         </li>
         <li>
-          <a href="/transaction">Transaction</a>
+          <NavLink
+            to="/transaction"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Transaction
+          </NavLink>
         </li>
       </ul>
     </nav>
