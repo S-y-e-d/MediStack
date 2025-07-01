@@ -6,7 +6,9 @@ import NotificationBar from '../components/NotificationBar';
 function Notification() {
     const BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const notificationUrl = `${BASE_URL}/api/notification`;
-    const generateNotification = `${BASE_URL}/api/notification/generate`;
+    const generateNotification = `${notificationUrl}/generate`;
+
+    // const generateNotification = `${BASE_URL}/api/notification/generate`;
     const [data, setData] = useState([]);
 
 
